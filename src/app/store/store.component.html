@@ -1,8 +1,8 @@
 <div class="navbar bg-info text-white">
     <a class="navbar-brand">SPORTS STORE</a>
 </div>
-<div class="row">
-    <div class="col-sm-3 p-4">
+<div class="row mx-1">
+    <div class="col-sm-3 p-3">
         <button class="btn btn-block btn-outline-primary" (click)="changeCategory()">
             Home
         </button>
@@ -18,6 +18,27 @@
             <div class="card-text p-3">
                 {{product.description}}
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mx-1">
+    <div class="col-sm-3 p-3"></div>
+    <div class="col-sm-9 p-3">
+        <div class="form-inline mr-1 d-inline-block">
+            <select class="form-control" [value]="productsPerPage"
+            (change)="changePageSize($event.target.value)">
+                <option value="3">3 per Page</option>
+                <option value="4">4 per Page</option>
+                <option value="6">6 per Page</option>
+                <option value="8">8 per Page</option>
+            </select>
+        </div>
+        <div class="btn-group d-inline-block float-right">
+            <button *ngFor="let page of pageNumbers" (click)="changePage(page)"
+            class="btn btn-outline-primary" [class.active]="page == selectedPage">
+                {{page}}
+            </button>
         </div>
     </div>
 </div>
